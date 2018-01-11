@@ -1,0 +1,12 @@
+div.portfolio-item {
+  margin-top: 15px;
+}
+.star-rating {
+  padding-top: 12px;
+}
+.card {
+  height: 200px;
+}
+img.card-img-top.hotel-img {
+    height: 100px;
+}

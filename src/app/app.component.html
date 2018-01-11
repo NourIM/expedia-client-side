@@ -1,20 +1,88 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+
+<!-- Navigation -->
+<nav class="navbar navbar-light bg-light static-top">
+  <div class="container">
+    <a class="navbar-brand" href="#"><h3>Expedia</h3></a>
+  </div>
+</nav>
+
+<!-- Masthead -->
+<header class="masthead text-white text-center">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <h1 class="mb-5">Find your favorite hotel and reserve for your trip now!</h1>
+      </div>
+      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm.value)">
+          <div class="row">
+            <div class="col-12 col-md-12 mb-2 mb-md-0">
+              <input 
+                #destinationName="ngModel"
+                ngModel
+                type="text"
+                class="form-control form-control-lg"
+                name="destinationName"
+                placeholder="Search">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4 col-md-5">
+              <label class="form-control-label">Check-in</label>
+              <input #minTripStartDate="ngModel" ngModel class="form-control" type="date" name="minTripStartDate">
+            </div>
+            <div class="col-4 col-md-5">
+              <label class="form-control-label">Check-out</label>
+              <input #maxTripStartDate="ngModel" ngModel class="form-control" type="date" name="maxTripStartDate">
+            </div>
+            <div class="col-2 col-md-2">
+              <label class="form-control-label">Duration</label>
+              <input #lengthOfStay="ngModel" ngModel class="form-control" type="number" name="lengthOfStay">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2 col-md-6">
+              <label class="form-control-label">Min Star Rating</label>
+              <input #minStarRating="ngModel" ngModel class="form-control" type="number" min="0" max="5" name="minStarRating"> 
+            </div>
+            <div class="col-2 col-md-6">
+              <label class="form-control-label">Max Star Rating</label>
+              <input #maxStarRating="ngModel" ngModel class="form-control" type="number" min="0" max="5" name="maxStarRating"> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2 col-md-6">
+              <label class="form-control-label">Min Guest Rating</label>
+              <input #minGuestRating="ngModel" ngModel class="form-control" type="number" name="minGuestRating"> 
+            </div>
+            <div class="col-2 col-md-6">
+              <label class="form-control-label">Max Guest Rating</label>
+              <input #maxGuestRating="ngModel" ngModel class="form-control" type="number" name="maxGuestRating"> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2 col-md-6">
+              <label class="form-control-label">Min Total Rate</label>
+              <input #minTotalRate="ngModel" ngModel class="form-control" type="range" title="{{minTotalRate.value}}" name="minTotalRate"> 
+            </div>
+            <div class="col-2 col-md-6">
+              <label class="form-control-label">Max Total Rate</label>
+              <input #maxTotalRate="ngModel" ngModel class="form-control" type="range" title="{{maxTotalRate.value}}" name="maxTotalRate"> 
+            </div>
+           </div>
+          <div class="row">
+            <button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
+            <a (click)="resetSearch()">Reset search</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="features-icons bg-light text-center">
+  <div class="container">
+    <hotel-tile [hotels]="hotelsInfo"></hotel-tile>
+  </div>
+</section>

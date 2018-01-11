@@ -1,0 +1,11 @@
+<div class="col-lg-4 col-sm-6 portfolio-item" *ngFor="let hotel of hotels">
+  <div class="card">
+    <img class="card-img-top hotel-img" [src]="hotel.hotelInfo.hotelImageUrl" alt="Hotel Image">
+    <div class="card-block">
+      <a [href]="hotel.hotelUrls.hotelInfositeUrl"><h4 class="card-title">{{hotel.hotelInfo.hotelName}}</h4></a>
+      <p class="card-text text-right star-rating">Star Rating({{hotel.hotelInfo.hotelStarRating}})</p>
+    </div>
+  </div>
+</div>
+
+<h1 *ngIf="hotels && !hotels.length" class="text-center"> Sorry there are no hotels mutch yours terms </h1>
