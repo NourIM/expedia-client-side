@@ -8,8 +8,7 @@ export class HotelService  {
   constructor(private http: Http) {}
 
   public findHotales(params = {}) {
-    console.log('params', params);
-    return this.http.post('http://expedia-dev.herokuapp.com/search', params)
+    return this.http.post('/search', params)
       .map((response: Response) => {
         return response.json();
       });
