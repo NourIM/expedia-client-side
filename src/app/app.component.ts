@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   }
 
   public onSubmit(formData) {
+    console.log(formData);
     this.hotelService.findHotales(formData)
       .subscribe((response) => {
         this.hotelsInfo = response.offers.Hotel || [];
